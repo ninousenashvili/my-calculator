@@ -1,6 +1,17 @@
 import { useEffect, useState } from "react";
-import GlobalStyle from "./components/GlobalStyles";
-import { Theme } from "./themes/dafaultTemes";
+import GlobalStyles from "./components/GlobalStyles";
+import styled, { ThemeProvider } from "styled-components";
+import { defaultTheme } from "./themes/defaultTemes";
+import { Helmet } from "react-helmet";
+import DolarIcon from "./images/icon-dollar.svg";
+
+// interface theme extends DefaultTheme {
+//   background: string;
+// }
+
+// const defaultTheme: theme = {
+//   background: "#C5E4E7",
+// };
 
 function App() {
   const [bill, setBill] = useState<number>(0);
@@ -29,11 +40,17 @@ function App() {
   }, [people]);
 
   return (
-    <>
-      <GlobalStyle />
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyles />
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
       <div className="App">
-        Bill amount
-        <input
+        Bill:
+        <Input
           placeholder="bill"
           type="number"
           value={bill}
@@ -46,6 +63,7 @@ function App() {
           onChange={(e) => {
             setBill(e.target.valueAsNumber);
           }}
+          dir="rtl"
         />
         <div>
           <button onClick={countTip}>5 %</button>
@@ -72,7 +90,7 @@ function App() {
           </button>
         </div>
         Number of people
-        <input
+        <Input
           placeholder="number of people"
           type="number"
           value={people}
@@ -87,8 +105,37 @@ function App() {
           total amount / person {showTotalPerPerson ? tolalPerPerson : "0.00"}
         </div>
       </div>
-    </>
+    </ThemeProvider>
   );
 }
 
+const Input = styled.input`
+  all: unset;
+  border-radius: 5px;
+  padding-right: 17px;
+  background-image: url(${DolarIcon});
+  background-color: ${(props) => props.theme.inputBackground};
+  background-position: left 19px center;
+  height: 49px;
+  background-repeat: no-repeat;
+  text-align: right;
+  font-size: 24px;
+  font-family: ${(props) => props.theme.fonts.primary};
+  color: ${({ theme }) => theme.colors.cyan.dark};
+
+  &::placeholder {
+    font-family: ${(props) => props.theme.fonts.primary};
+    color: ${({ theme }) => theme.colors.cyan.dark};
+    opacity: 35%;
+  }
+
+  &:hover {
+    outline: 2px solid ${({ theme }) => theme.colors.cyan.strong};
+  }
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
 export default App;

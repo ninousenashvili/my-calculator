@@ -20,18 +20,18 @@ export interface Theme {
 export const defaultTheme: Theme = {
   colors: {
     cyan: {
-      strong: "hsl(172, 67%, 45%)",
-      dark: "hsl(183, 100%, 15%)",
-      darkGrayish: "hsl(186, 14%, 43%)",
-      grayish: "hsl(184, 14%, 56%)",
-      lightGrayish: "hsl(185, 41%, 84%)",
-      extraLightGrayish: "hsl(189, 41%, 97%)",
+      strong: "#25BFAB",
+      dark: "#00484C",
+      darkGrayish: "#7F9B9E",
+      grayish: "#7F9C9E",
+      lightGrayish: "#C5E4E6",
+      extraLightGrayish: "#F4F9FA",
     },
     white: "hsl(0, 0%, 100%)",
   },
   fonts: {
     primary: "Space Mono",
   },
-  background: "hsl(185, 41%, 84%)",
+  background: "#C5E4E6",
   inputBackground: "#F3F9FA",
 };

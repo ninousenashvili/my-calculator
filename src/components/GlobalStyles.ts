@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
 
 *{
     margin:0;
@@ -9,7 +9,8 @@ const GlobalStyle = createGlobalStyle`
 
 }
 body{
-    
+    /* background-color: ${(props) => props.theme.background}; */
+    font-family:"Space Mono"
 }
 ;`;
-export default GlobalStyle;
+export default GlobalStyles;

@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
 
 }
 body{
-    /* background-color: ${(props) => props.theme.background}; */
+    background-color: ${(props) => props.theme.background};
     font-family:"Space Mono"
 }
 ;`;
